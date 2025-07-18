@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        :root {
+            --gray-1: #ddd;
+            --gray-2: #757575;
+            --gray-3: #222;
+            --white: #f1f1f1;
+            --black: #020202;
+            --gradient-black-gray-default: #222;
+            --gradient-black-gray: linear-gradient(135deg, #222, #020202);
+            --gradient-gray-black-default: #757575;
+            --gradient-gray-black: linear-gradient(135deg, #757575, #020202);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Rubik', sans-serif;
+            color: var(--gray-2);
+          background-color: rgb(255, 192, 203);
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: auto;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 120px;
+            background-color: var(--gradient-black-gray-default);
+            background-image: var(--gradient-black-gray);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            display: block;
+            padding: 20px 5px;
+            text-align: center;
+            transition: all .3s;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            background-color: var(--black);
+        }
+
+        nav a i {
+            display: block;
+            text-align: center;
+            width: 100%;
+            margin-bottom: 10px;
+            font-size: 26px;
+        }
+
+        main {
+            margin-left: 120px;
+            padding: 0 30px;
+        }
+
+        main section {
+            margin: 40px 0;
+        }
+
+        main section h2 {
+            font-weight: normal;
+            font-size: 30px;
+            margin-bottom: 5px;
+            color: var(--white);
+        }
+
+        main section h3 {
+            font-weight: normal;
+            font-size: 22px;
+            margin-top: 34px;
+            margin-bottom: 15px;
+            color: var(--white);
+        }
+
+        main section hr {
+            max-width: 180px;
+            border: none;
+            height: 5px;
+            background-color: var(--gradient-gray-black-default);
+            background-image: var(--gradient-gray-black);
+            margin-bottom: 15px;
+        }
+
+        main #home {
+            text-align: center;
+        }
+
+        main #home h1 {
+            color: var(--white);
+            font-size: 48px;
+            font-weight: normal;
+            margin-bottom: 15px;
+        }
+
+        main #home p {
+            font-weight: normal;
+            font-size: 20px;
+            margin-bottom: 70px;
+        }
+
+        main #home img {
+            width: 100%;
+            max-width: 1000px;
+            margin-bottom: 5px;
+        }
+
+        main #about p {
+            line-height: 28px;
+            text-align: justify;
+            margin-bottom: 10px;
+        }
+
+        main #about ul {
+            list-style-position: inside;
+            margin-bottom: 20px;
+        }
+
+        main #about ul li {
+            line-height: 32px;
+        }
+
+        main #workout p {
+            line-height: 28px;
+            text-align: justify;
+            margin-bottom: 10px;
+        }
+
+        main #workout .grid {
+            display: grid;
+            gap: 20px;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        main #workout .grid .card {
+            box-shadow: 2px 2px 5px var(--gray-3);
+            border-radius: 5px;
+            background-color: var(--gradient-black-gray-default);
+            background-image: var(--gradient-black-gray);
+        }
+
+        main #workout .grid .card h4 {
+            color: var(--gray-1);
+            border-bottom: 2px solid var(--gray-3);
+            padding: 20px 15px;
+            line-height: 30px;
+            font-weight: normal;
+        }
+
+        main #workout .grid .card ol {
+            list-style-position: inside;
+            padding: 15px 10px;
+        }
+
+        main #workout .grid .card ol li {
+            line-height: 32px;
+        }
+
+        main #movies p {
+            line-height: 28px;
+            text-align: justify;
+            margin-bottom: 10px;
+        }
+
+        main #movies .grid {
+            display: grid;
+            gap: 20px;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+        }
+
+        main #movies .grid img {
+            width: 100%;
+        }
+
+        main #movies .grid div:nth-child(1) {
+            grid-row: 1 / 3;
+            grid-column: 1 / 3;
+        }
+
+        main #contact p {
+            margin-top: 20px;
+        }
+
+        main #contact .follow-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        main #contact p i {
+            font-size: 22px;
+            margin-right: 5px;
+            vertical-align: middle;
+            color: var(--gray-1);
+        }
+
+        main #contact .follow-links a {
+            display: block;
+            color: var(--white);
+            background-color: var(--gradient-black-gray-default);
+            background-image: var(--gradient-black-gray);
+            height: 50px;
+            line-height: 50px;
+            width: 50px;
+            text-align: center;
+            border-radius: 50%;
+            margin: 5px;
+            transition: all .3s;
+            font-size: 20px;
+        }
+
+        main #contact .follow-links a:hover {
+            transform: translateY(-10px);
+        }
+
+        @media (max-width:960px) {
+            main #workout .grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            main #movies .grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            main #movies .grid div:nth-child(1) {
+                grid-row: 1 / 2;
+                grid-column: 1 / 2;
+            }
+        }
+
+        @media (max-width:640px) {
+
+            nav {
+                height: auto;
+                width: 100%;
+                flex-direction: row;
+                overflow-x: auto;
+            }
+
+            main {
+                margin-left: 0;
+                padding: 0 20px;
+                margin-top: 130px;
+            }
+
+            main #workout .grid {
+                grid-template-columns: 1fr;
+            }
+
+            main #movies .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <nav>
+            <a href="#home">
+                <i class="fa-solid fa-house-chimney"></i>
+                HOME
+            </a>
+            <a href="#about">
+                <i class="fa-solid fa-user"></i>
+                ABOUT
+            </a>
+            <a href="#movies">
+                <i class="fa-solid fa-film"></i>
+                favorite memories
+            </a>
+        </nav>
+        <main>
+            <section id="home">
+                <h1>my beuteful princess</h1>
+                <img src="504628853_613075464747988_7308584944155521114_n_.jpg">
+            </section>
+            <section id="about">
+                <h2>About her</h2>
+                <hr>
+                <p>البنت اللي انتي شيفاها دي هي اغلي واحلي حاجه جت وحصلت في حياتي كلها
+روحي وبنتي و اميرتي واحلي ما املك في حياتي كلها كفايه قلبها الجميل الحنين ولا حبها ليا انا مهما اتكلم مش هعرف اوصف كميت حبي ليها بحبك يا احلي حاجه في حياتي كلهت لو قعدت اتكلم من هنا لي بكره علي قد ايه هيا اجمل واحلي واحن بنت شوفتها في حياتي كلها 
+</p>
+                <h3>Basic Info</h3>
+                <ul>
+                    <li>Birthday: 17th of decamber, 2009  دا اليوم اللي جت احلي حاجه  في حياتي الدنيا كلها</li>
+                    <li>عندها جمال يخلي اليشوفها ينبهر مهما كان مين</li>
+                    <li>عنده اجمل ابتسامه ممكن تخلي اي حد فاقد الامل في الدنيا يحب الدنيا تاني</li>
+                    <li>عندها اجمل ملامح ممكن اي حد يشوفها في الدنيا كلها</li>
+                    <li>عندها احلي خدود ممكن اي حد يحب يمسكهم ويشدهم</li>
+                    <li>عندي اجمل صدر انا شوفته في حياتي كلها</li>
+                    <li>عندها اجمل شعر شوفته في حياتي كلها من كتر جماله بدعي ربنا يخليني من نصيبها وحلالي بسرعه عشان اقدر العملوا بي ايدي وهي في حضني</li>
+                </ul>
+            </section>
+            <!-- <section id="workout">
+                <h2>My Workout</h2>
+                <hr>
+                <p>Adkins focuses a lot on volume training and simple weight training.</p>
+                <p>Adkins makes sure to hit the gym five to six days each week and train intensely. He mostly focuses on
+                    compound lifts to gain functional strength and gain muscle.</p>
+                <p>He mixes up his workouts, training three days with weights and two days with cardio mixed with
+                    martial
+                    arts. Aside from explosive movements, he performs plyometrics for his lower body. </p>
+                <h3>Exercises</h3>
+                <p>Here’s Scott Adkins MMA/Cardio routine.</p>
+                <div class="grid">
+                    <div class="card">
+                        <h4>Monday: Triceps and Chest</h4>
+                        <ol>
+                            <li>Bench Press (3 sets, 8-12 reps)</li>
+                            <li>Chest Dips (3 sets, 15 reps)</li>
+                            <li>Incline Bench Press (3 sets, 8-12 reps)</li>
+                            <li>Overhead Tricep Extension (3 sets, 8-12 reps)</li>
+                            <li>Chest Flys (3 sets, 8-12 reps)</li>
+                            <li>Tricep Cable Pushdown (3 sets, 8-12 reps)</li>
+                            <li>Push Ups (3 sets, 25 reps)</li>
+                            <li>Cable or Dumbbell Kick Backs (3 sets, 8-12 reps)</li>
+                        </ol>
+                    </div>
+                    <div class="card">
+                        <h4>Tuesday: MMA or Cardio</h4>
+                        <ol>
+                            <li>Cardio (HIIT for 15-20 min)</li>
+                            <li>Treadmill: sprint 6-10 mph (1 min on) walk 2.5-3.5 mph (1 min off)</li>
+                            <li>Bike: more than 100 RPMs at about level 10 (1 min on), lower RPMs at about level 3-5 (1
+                                min
+                                off)</li>
+                            <li>Steady Paced Cardio like a bike, treadmill, Stair Master, and Elliptical (15-20 min)
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="card">
+                        <h4>Wednesday: Biceps and Back</h4>
+                        <ol>
+                            <li>Deadlift (3 sets, 8-12 reps)</li>
+                            <li>Dumbbell Bicep Curl (3 sets, 8-12 reps)</li>
+                            <li>Cable Row (3 sets, 8-12 reps)</li>
+                            <li>Preacher Curl (3 sets, 8-12 reps)</li>
+                            <li>Wide-Grip Pull-Ups (3 sets, 8-12 reps)</li>
+                            <li>Hammer Curl (3 sets, 8-12 reps)</li>
+                            <li>Lateral Pulldowns (3 sets, 8-12 reps)</li>
+                            <li>Barbell Bent-Over Row (3 sets, 8-12 reps)</li>
+                        </ol>
+                    </div>
+                    <div class="card">
+                        <h4>Thursday: MMA or Cardio</h4>
+                        <ol>
+                            <li>Cardio (HIIT for 15-20 min)</li>
+                            <li>Treadmill: sprint 6-10 mph (1 min on), walk 2.5-3.5 mph (1 min off)</li>
+                            <li>Bike: more than 100 RPMs at about level 10 (1 min on), lower RPMs at about level 3-5 (1
+                                min
+                                off)</li>
+                            <li>Steady Paced Cardio like a bike, treadmill, Stair Master, and Elliptical (15-20 min)
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="card">
+                        <h4>Friday: Shoulders and Legs</h4>
+                        <ol>
+                            <li>Back Squats (3 sets, 8-12 reps)</li>
+                            <li>Military Press (3 sets, 8-12 reps)</li>
+                            <li>Leg Press (3 sets, 8-12 reps)</li>
+                            <li>Arnold Press (3 sets, 8-12 reps)</li>
+                            <li>Hamstring Curl (3 sets, 8-12 reps)</li>
+                            <li>houlder Dumbbell Front Raise (3 sets, 8-12 reps)</li>
+                            <li>Calf Raise (3 sets, 8-12 reps)</li>
+                            <li>Dumbbell or Barbell Shrugs (3 sets, 8-12 reps)</li>
+                        </ol>
+                    </div>
+                    <div class="card">
+                        <h4>Saturday: MMA or Cardio Optional</h4>
+                        <ol>
+                            <li>Cardio (HIIT for 15-20 min)</li>
+                            <li>Treadmill: sprint 6-10 mph (1 min on), walk 2.5-3.5 mph (1 min off)</li>
+                            <li>Bike: more than 100 RPMs at about level 10 (1 min on), lower RPMs at about level 3-5 (1
+                                min
+                                off)</li>
+                            <li>Steady Paced Cardio like a bike, treadmill, Stair Master, and Elliptical (15-20 min)
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="card">
+                        <h4>Sunday: Rest</h4>
+                        <ol>
+                            <li>Rest and eat good food to recover my body.</li>
+                        </ol>
+                    </div>
+                </div>
+            </section> -->
+            <section id="movies">
+                <h2>My favorite memories about you</h2>
+                <hr>
+                <p>Here are some of my best memories.</p>
+                <div class="grid">
+                    <div>
+                        <img src="509374670_2489423694757451_9153074958935439077_n_.jpg">
+                    </div>
+                    <div>
+                        <img src="520252524_30417195824592222_9060857745919508228_n_.jpg">
+                    </div>
+                    <div>
+                        <img src="518000020_600779813076087_2917073029131392634_n_.jpg">
+                    </div>
+                    <div>
+                        <img src="520244476_1270334561407166_2426002924649162548_n_.jpg">
+                    </div>
+                    <div>
+                        <img src="517931394_1379169756494894_5967165923382752260_n_.jpg">
+                    </div>
+                    <div>
+                        <img src="519680546_1644103369879107_4356786511650195961_n_.jpg">
+                    </div>
+                    <div>
+                        <img src="519942920_610420995438122_3316583961666972296_n_.jpg">
+                    </div>
+                    <div>
+                        <img src="520065128_1426256891898446_3130066936317219430_n_.jpg">
+                    </div>
+                    <div>
+                        <img src="518687261_1428187155166797_5389409865722695505_n_.jpg">
+                    </div>
+                    <div>
+                        <img src="519677216_2490471137953676_1963036311466813105_n_.jpg">
+                    </div>
+                    <div>
+                        <img src="517685864_722476703932267_6037280305341403565_n_.jpg">
+                    </div>
+                    <div>
+                        <img src="518107107_1096325771868171_4840516737202037548_n_.jpg">
+                    </div>
+                    <div>
+                        <img src="518052846_1134631288482305_8999674556428638315_n_.jpg">
+                    </div>
+                    <div>
+                        <img src="519982387_1368413087556940_2017521279633254438_n_.jpg">
+                    </div>
+                    <div>
+                        <img src="519631678_1462800741833915_1477281857994003320_n_.jpg">
+                    </div>
+                    <div>
+                        <img src="517748376_1776777813045842_2885987667360503267_n_.jpg">
+                    </div>
+                    <div>
+                        <img src="518649303_1236393741618232_7198436061329405676_n.jpg">
+                    </div>
+                    <div>
+                        <img src="516932141_1841469356788900_8923793261734169975_n_.jpg">
+                    </div>
+                </div>
+                <h3>في الاخر حبيت اقول بحبك بحبك بحبك بحبك يا احلي حاجه في حياتي كلها بحبك يا اجمل بنت في حياتي كلها بحبك يا اجمل واغلي اميره في الدنيا بحبك يا ميورتي بحبك يا اغلي واحلي نعمه ربنا رزقني بيها</h3>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>
